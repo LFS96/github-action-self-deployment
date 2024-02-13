@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  web:
+    image: httpd
+    volumes:
+      - "../www/:/usr/local/apache2/htdocs/"
+    expose:
+      - 80
+    ports:
+      - "8123:80"

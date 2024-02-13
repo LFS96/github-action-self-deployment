@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testwebseite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Source Code Pro', monospace;
+        }
+    </style>
+</head>
+<body class="container text-center mt-4">
+<h1>Cookie Chaos and the DSGVO Dance Party!</h1>
+<p>
+    Once upon a digital realm, in the whimsical land of Cybernia, cookies were having the time of their crunchy lives.
+    The
+    chocolate chips were swirling, the sugar cookies were twirling, and the gingerbread folks were breakdancing their
+    way to
+    sugary glory. Little did they know, the DSGVO (Datenschutz-Grundverordnung or General Data Protection Regulation)
+    was
+    about to crash their sweet fiesta.
+</p>
+<p>
+    The Cookie Council, headed by the wise and crispy Oreo Elder, gathered the cookie community to discuss the impending
+    DSGVO invasion. With their sugar-coated hearts pounding, they devised a plan to comply with the digital laws while
+    still
+    keeping the cookie carnival alive.
+</p>
+<p>
+    First on the agenda was the Cookie Consent Conundrum. The cookies had to ask their devourers for permission to be
+    nibbled on. Imagine the dilemma of a chocolate chip unsure if it's allowed to delight someone's taste buds! They
+    decided
+    to make it a funky dance routine, with each cookie doing a delightful jig as it sought approval. Users couldn't
+    resist
+    clicking 'Allow' when faced with such a sweet performance.
+</p>
+<p>
+    Next up was the Data Delight Derby, where cookies had to store information responsibly. The smart cookies among them
+    encrypted their data with chocolatey algorithms, ensuring that only the most refined palates could savor the secrets
+    within.
+</p>
+<p>
+    But the highlight of the DSGVO dance party was the Privacy Pirouette. Cookies had to gracefully pirouette away from
+    intrusive third-party trackers, piranhas of the digital sea. With each elegant twirl, they protected themselves from
+    unwanted eyes while leaving a trail of digital fairy dust.
+</p>
+<p>
+    As the DSGVO music played on, the cookies realized that compliance could be as sweet as a double-chocolate chip
+    surprise. They embraced the challenge and turned it into a delightful spectacle, showing the world that data
+    protection
+    and deliciousness could go hand in hand.
+</p>
+<p>
+    And so, in the land of Cybernia, the cookies continued to dance their way through the digital landscape, sprinkling
+    joy
+    and chocolate crumbs while respecting the DSGVO rules. After all, in a world where bytes and bites coexist, it's
+    essential to have a little fun while keeping things cookie-compliant! 🍪💃
+</p>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<script>
+    // Function to generate a random color with good contrast
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Function to calculate the contrast ratio between two colors
+    function getContrastRatio(color1, color2) {
+        const lum1 = getLuminance(color1) + 0.05;
+        const lum2 = getLuminance(color2) + 0.05;
+        return lum1 > lum2 ? lum1 / lum2 : lum2 / lum1;
+    }
+
+    // Function to calculate the luminance of a color
+    function getLuminance(color) {
+        const rgb = parseInt(color.slice(1), 16);
+        const r = (rgb >> 16) & 0xff;
+        const g = (rgb >> 8) & 0xff;
+        const b = (rgb >> 0) & 0xff;
+
+        const sRGB = [r / 255, g / 255, b / 255];
+        const sRGBLinear = sRGB.map(value => {
+            if (value <= 0.04045) {
+                return value / 12.92;
+            } else {
+                return Math.pow((value + 0.055) / 1.055, 2.4);
+            }
+        });
+
+        return 0.2126 * sRGBLinear[0] + 0.7152 * sRGBLinear[1] + 0.0722 * sRGBLinear[2];
+    }
+
+    // Function to set random text and background color with good contrast
+    function setRandomColors() {
+        const textColor = getRandomColor();
+        let bgColor;
+
+        do {
+            bgColor = getRandomColor();
+        } while (getContrastRatio(textColor, bgColor) < 4.5); // Ensure contrast ratio is at least 4.5
+
+        document.body.style.color = textColor;
+        document.body.style.backgroundColor = bgColor;
+    }
+
+    // Call the function to set initial colors
+    setRandomColors();
+</script>
+</body>
+</html>
