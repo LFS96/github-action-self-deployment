@@ -16,3 +16,15 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: /root/docker/github_deploy/github-action-self-deployment/update-start.sh
